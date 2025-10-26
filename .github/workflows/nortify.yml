@@ -23,6 +23,9 @@ jobs:
         run: pip install feedparser requests
 
       - name: Run arXiv notifier
+        env:
+          WEBHOOK_PN: ${{ secrets.WEBHOOK_PN }}
+          WEBHOOK_MS: ${{ secrets.WEBHOOK_MS }}
         run: python arxiv_notify.py
 
       - name: Commit updated notified IDs

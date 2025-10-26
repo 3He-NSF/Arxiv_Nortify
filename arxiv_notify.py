@@ -22,7 +22,11 @@ for item in queries:
     query = item["query"]
     webhook = item["webhook"]
 
+    webhook = os.getenv(webhook)
     encoded_query = quote_plus(query, safe="'")
+    if not webhook:
+        print(f"⚠️ Webhook '{webhook}' not found in environment variables. Skipping.")
+        continue
     url = (
         "http://export.arxiv.org/api/query?"
         f"search_query=all:{encoded_query}&start=0&max_results={max_results}"

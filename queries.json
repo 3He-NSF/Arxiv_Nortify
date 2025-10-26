@@ -1,10 +1,10 @@
 [
   {
     "query": "'polarized neutron'",
-    "webhook": "https://discord.com/api/webhooks/1431846328857526335/Ma2WggCXnCCtmsP3SQJEuRFgUTOjfVMRRBO0AvTRupfh2oLg_Fgc4D5FUkwRm19le4Pu"
+    "webhook": "WEBHOOK_PN"
   },
   {
     "query": "'magnetic structure'",
-    "webhook": "https://discord.com/api/webhooks/1431846495208079411/YROVo9w2MW7d2Tf6PosF4DE2WRdIdR4pbGZopKnJCsDa5MXZq7cFXrsIgnGj106EdzzP"
+    "webhook": "WEBHOOK_MS"
   }
 ]
