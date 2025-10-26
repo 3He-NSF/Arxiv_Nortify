@@ -58,7 +58,10 @@ for item in queries:
         print(f"✅ Sent {len(new_papers)} new papers for query: {query}")
         new_ids.update(new_papers)
     else:
-        print(f"⚪ No new papers for query: {query}")
+        # 通知（新規論文なし）
+        no_update_msg = f"📭 **arXiv Daily Update — {query} ({datetime.date.today()})**\n 新着論文はなかったよ."
+        requests.post(webhook, json={"content": no_update_msg})
+        print(f"ℹ️ No new papers for query: {query} — sent 'no update' notice")
 
 # --- Save updated ID list ---
 if new_ids:
