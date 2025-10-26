@@ -1,5 +1,8 @@
 name: Daily arXiv to Discord
 
+permissions:
+  contents: write   # ← これを追加！
+
 on:
   schedule:
     - cron: "0 20 * * *"  # 毎日05:00 JST (20:00 UTC)
