@@ -20,7 +20,7 @@ jobs:
         run: pip install feedparser requests
 
       - name: Run arXiv notifier
-        run: python notify.py
+        run: python arxiv_notify.py
 
       - name: Commit updated notified IDs
         run: |
