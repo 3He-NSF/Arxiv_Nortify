@@ -1,0 +1,31 @@
+name: Daily arXiv to Discord
+
+on:
+  schedule:
+    - cron: "0 20 * * *"  # 毎日05:00 JST (20:00 UTC)
+  workflow_dispatch:       # 手動実行も可能
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install feedparser requests
+
+      - name: Run arXiv notifier
+        run: python notify.py
+
+      - name: Commit updated notified IDs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add notified_ids.json
+          git commit -m "Update notified IDs [skip ci]" || echo "No new updates"
+          git push
